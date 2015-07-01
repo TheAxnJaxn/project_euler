@@ -4,7 +4,17 @@
 
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
+def problem_1(num)
+  multiples = []
+  while num >= 3
+    num -= 1
+    multiples << num if (num % 3 == 0) || (num % 5 == 0)
+  end
+  multiples.inject(:+)
+end
 
+prob1_num = 1000
+puts "1. The sum of all multiples of 3 or 5 below #{prob1_num} is: #{problem_1(prob1_num)}"
 
 # Even Fibonacci numbers
 # Problem 2
