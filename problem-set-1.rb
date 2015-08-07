@@ -7,9 +7,9 @@ def problem_1(num)
 end
 
 prob1_num = 1_000
-puts "1. The sum of all multiples of 3 or 5 below #{prob1_num} is: #{problem_1(prob1_num)}"
+puts "1. The sum of multiples of 3 or 5 below #{prob1_num} is: #{problem_1(prob1_num)}"
 
-# Problem 2 - Even Fibonacci numbers ##################
+# Problem 2 - Even Fibonacci numbers ##########################################
 
 # Recursive solution, which I had to abandon because it causes a stack
 # level too deep when the upper_limit is too high (like 4_000_000)
@@ -41,7 +41,7 @@ end
 prob2_num = 4_000_000
 puts "2. The sum of even-valued Fibonacci terms below #{prob2_num} is: #{problem_2(prob2_num)}"
 
-# Problem 3 - Largest Prime Factor ####################
+# Problem 3 - Largest Prime Factor ############################################
 # The prime factors of 13195 are 5, 7, 13 and 29.
 #
 # What is the largest prime factor of the number 600851475143 ?
@@ -62,7 +62,7 @@ end
 prob3_num = 600_851_475_143
 puts "3. The largest prime factor of the number #{prob3_num} is: #{problem_3(prob3_num)}"
 
-# Problem 4 - Largest Palindrome Factor ###############
+# Problem 4 - Largest Palindrome Factor #######################################
 # A palindromic number reads the same both ways.
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
@@ -91,3 +91,23 @@ def is_palindrome?(num)
 end
 
 puts "4. The largest palindromic product of two 3-digit numbers is: #{problem_4}"
+
+# Problem 5 - Smallest multiple ###############################################
+# 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+#
+# What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+def problem_5(lower_limit, upper_limit)
+  searching = true
+  numerator = upper_limit
+  while searching == true
+    numerator += 2
+    searching = false
+    (lower_limit..upper_limit).each do |denominator|
+      searching = true unless numerator % denominator == 0
+    end
+  end
+  return numerator
+end
+
+puts "5. The smallest number evenly divisible by 1 to 20 is: #{problem_5(2, 20)}"
